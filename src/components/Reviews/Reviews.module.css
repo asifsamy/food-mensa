@@ -1,0 +1,26 @@
+.reviews {
+  margin: 3rem 2rem 3rem 2rem;
+}
+
+.reviews ul {
+  list-style: none;
+}
+
+.reviews p {
+  font-size: 0.85rem;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-bottom: -1rem;
+}
+
+.user h5 {
+  font-size: 0.9rem;
+  padding-left: 1rem;
+}
+
+.date {
+  font-size: 0.8rem;
+}

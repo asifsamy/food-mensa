@@ -1,0 +1,15 @@
+.actions {
+  text-align: right;
+}
+
+.invalid {
+  color: #e4122e;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  /* margin: 0.5rem 0; */
+}
