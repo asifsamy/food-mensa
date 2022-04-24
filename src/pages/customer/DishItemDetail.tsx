@@ -11,17 +11,24 @@ import dishStyles from "../../components/Dishes/AvailableDishes.module.css";
 import DishItem from "../../components/Dishes/DishItem/DishItem";
 import Cart from "../../components/Cart/Cart";
 import Reviews from "../../components/Reviews/Reviews";
+import { DishIdParams } from "../../components/Reviews/NewReview";
+import Dishes from "../../models/dishes";
 
-const DishItemDetail = (props) => {
-  const [dishItem, setDishItem] = useState({});
+const DishItemDetail: React.FC = (props) => {
+  const [dishItem, setDishItem] = useState<Dishes>({
+    id: "",
+    name: "",
+    description: "",
+    price: 0,
+  });
   const cartCtx = useContext(CartContext);
   const match = useRouteMatch();
-  const params = useParams();
+  const params = useParams<DishIdParams>();
   const { dishId } = params;
   const { isLoading, error, sendRequest: fecthSingleDishItem } = useHttp();
 
   useEffect(() => {
-    const transformDishItem = (dishObj) => {
+    const transformDishItem = (dishObj: Dishes) => {
       setDishItem(dishObj);
     };
 
@@ -58,7 +65,7 @@ const DishItemDetail = (props) => {
           content="Food Mensa. Order your meal and enjoy delicious food."
         />
       </Helmet>
-      {cartCtx.cartIsVisible && <Cart hideCart={props.onHideCart} />}
+      {cartCtx.cartIsVisible && <Cart />}
       <section className={dishStyles.dishes}>
         <Card>
           <DishItem

@@ -13,7 +13,8 @@ const DishItem: React.FC<{
   name: string;
   price: number;
   description: string;
-  onDeleteItem: (id: string) => void;
+  onDeleteItem?: (id: string) => void;
+  // onDeleteItem: (id: string) => void;
 }> = (props) => {
   // state declaration to show update value in client site
   const [itemState, setItemState] = useState({
@@ -72,7 +73,8 @@ const DishItem: React.FC<{
             item={dishItem}
             onUpdateItem={updateItemHandler}
             // one state up to its' parent component
-            onDelete={props.onDeleteItem.bind(null, props.id)}
+            onDelete={props.onDeleteItem!(props.id) as any}
+            // onDelete={props.onDeleteItem.bind(null, props.id)}
           />
         )}
         {!adminUrl && (

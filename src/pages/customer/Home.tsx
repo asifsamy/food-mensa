@@ -4,7 +4,7 @@ import Cart from "../../components/Cart/Cart";
 import Dishes from "../../components/Dishes/Dishes";
 import CartContext from "../../store/cart-context";
 
-const Home = (props) => {
+const Home: React.FC = (props) => {
   const cartCtx = useContext(CartContext);
 
   return (
@@ -16,7 +16,7 @@ const Home = (props) => {
           content="Food Mensa. Order your meal and enjoy delicious food."
         />
       </Helmet>
-      {cartCtx.cartIsVisible && <Cart hideCart={props.onHideCart} />}
+      {cartCtx.cartIsVisible && <Cart />}
       <Dishes />
     </Fragment>
   );

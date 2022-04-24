@@ -4,13 +4,19 @@ import { Helmet } from "react-helmet";
 
 import AuthForm from "../../components/Auth/AuthForm";
 import AuthContext from "../../store/auth-context";
+import { type } from "os";
+
+type AuthInput = {
+  email: string;
+  password: string;
+};
 
 const AdminAuth = () => {
   const history = useHistory();
-  const [authError, setAuthError] = useState();
+  const [authError, setAuthError] = useState<string>("");
   const authCtx = useContext(AuthContext);
 
-  const authenticationHandler = (inputObj, apiUrl) => {
+  const authenticationHandler = (inputObj: AuthInput, apiUrl: string) => {
     fetch(apiUrl, {
       method: "POST",
       body: JSON.stringify({
@@ -18,7 +24,7 @@ const AdminAuth = () => {
         password: inputObj.password,
         returnSecureToken: true,
       }),
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
     })
